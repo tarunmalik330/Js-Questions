@@ -4,15 +4,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript Questions</title>
-    <link rel="shortcut icon" href="./assets/images/png/task.png" type="image/x-icon">
+    <title>Student Search</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
+    <div class="container mt-5">
+        <h1>Student Search</h1>
+        <div id="subjectCategories">
+            <h3>Available Subjects:</h3>
+            <ul id="subjectList">
+                <li data-subject="math">Math</li>
+                <li data-subject="accounts">Accounts</li>
+                <li data-subject="business">Business</li>
+                <li data-subject="eco">Eco</li>
+                <li data-subject="all">All</li>
+            </ul>
+        </div>
+        <input type="text" id="searchInputStudents" placeholder="Type a subject to find students..." />
+        <ul id="studentList">
+            <li data-subject="math">Student 1 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Muskan <br>
+                    Subject = Math <br>
+                    Teacher = Mrs. Punita
+                </span></li>
+            <li data-subject="math">Student 2 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Ram <br>
+                    Subject = Math <br>
+                    Teacher = Mrs. Punita
+                </span></li>
+            <li data-subject="accounts">Student 3 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Shalu <br>
+                    Subject = Accounts <br>
+                    Teacher = Dr. Monika
+                </span></li>
+            <li data-subject="business">Student 4 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Vivek <br>
+                    Subject = Business <br>
+                    Teacher = Dr. Monika
+                </span></li>
+            <li data-subject="eco">Student 5 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Sumit <br>
+                    Subject = Economics <br>
+                    Teacher = Deepak Mital
+                </span></li>
+            <li data-subject="eco">Student 6 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Anshu <br>
+                    Subject = Economics <br>
+                    Teacher = Deepak Mital
+                </span></li>
+            <li data-subject="math">Student 7 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Smile <br>
+                    Subject = Math <br>
+                    Teacher = Mrs. Punita
+                </span></li>
+            <li data-subject="accounts">Student 8 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Ritu <br>
+                    Subject = Accounts <br>
+                    Teacher = Dr. Monika
+                </span></li>
+            <li data-subject="math">Student 9 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Shyam <br>
+                    Subject = Math <br>
+                    Teacher = Mrs. Punita
 
+                </span></li>
+            <li data-subject="eco">Student 10 <br><span
+                    style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
+                    Ravina <br>
+                    Subject = Economics <br>
+                    Teacher = Deepak Mital
+                </span></li>
+        </ul>
+    </div>
 
-    <script src="./assets/js/app.js"></script>
+    <script>
+        const searchInput = document.getElementById('searchInputStudents');
+        const students = document.querySelectorAll('#studentList li');
+        const subjects = document.querySelectorAll('#subjectList li');
+        function filterStudents(filter) {
+            students.forEach(student => {
+                const subject = student.dataset.subject.toLowerCase();
+                student.style.display = (filter === "all" || subject === filter || student.textContent.toLowerCase().includes(filter)) ? '' : 'none';
+            });
+        }
+        filterStudents('all');
+        searchInput.addEventListener('input', () => filterStudents(searchInput.value.toLowerCase().trim()));
+        subjects.forEach(item => item.addEventListener('click', () => {
+            const selectedSubject = item.dataset.subject.toLowerCase();
+            filterStudents(selectedSubject);
+        }));
+
+    </script>
 </body>
 
 </html>

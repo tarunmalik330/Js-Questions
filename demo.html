@@ -1,0 +1,159 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Searchable List</h1>
+        <input type="text" id="searchInputItems" placeholder="Search for items..." />
+        <ul id="itemList">
+            <li>Hindi</li>
+            <li>English</li>
+            <li>Math</li>
+            <li>Economics</li>
+            <li>Accounts</li>
+            <li>Bussiness</li>
+            <li>Music</li>
+        </ul>
+    </div>
+
+
+    <script>
+        const searchInputItems = document.getElementById('searchInputItems');
+        const itemList = document.getElementById('itemList');
+        const items = itemList.getElementsByTagName('li');
+        searchInputItems.addEventListener('keyup', function () {
+            const filter = searchInputItems.value.toLowerCase();
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i].textContent.toLowerCase();
+                if (item.includes(filter)) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        });
+    </script> -->
+    <!-- ============== LOOP ============= -->
+    <!-- <script>
+        // for-loop => The for loop runs a specific number of times. you define a starting point, a condition to check, and how to update the loop at the end of each round.
+        for (let i = 0; i < 5; i++) {
+            console.log("this is loop number " + i);
+        }
+        // while-loop => the while loop keeps running as long as a condition is true.
+        let count = 0;
+        while (count < 5) {
+            console.log("count is " + count);
+            count++;
+        }
+        // do-while-loop => The do-while loop is similar to a while loop, but it always runs at least once because the condition is checked after the loop has executed.
+        let number = 0;
+        do {
+            console.log("number is " + number);
+            number++;
+        } while (number < 2);
+    </script> -->
+    <!-- 
+        <script>
+            const searchInputStudents = document.getElementById('searchInputStudents');
+            const students = document.querySelectorAll('#studentList li');
+            const subjectItems = document.querySelectorAll('#subjectList li')
+            function filterStudents(filter) {
+                if (filter === "all") {
+                    students.forEach(student => student.style.display = "");
+                } else {
+                    students.forEach(student => {
+                        const studentSubject = student.getAttribute('data-subject').toLowerCase();
+                        if (studentSubject === filter || student.textContent.toLowerCase().includes(filter)) {
+                            student.style.display = '';
+                        } else {
+                            student.style.display = 'none';
+                        }
+                    });
+                }
+            }
+            searchInputStudents.addEventListener('input', () => {
+                const filter = searchInputStudents.value.toLowerCase().trim();
+                filterStudents(filter);
+            });
+            subjectItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const selectedSubject = item.getAttribute('data-subject').toLowerCase();
+                    filterStudents(selectedSubject);
+                });
+            });
+            students.forEach(student => student.style.display = 'none');
+        </script> -->
+
+<!-- </body>
+
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Questions</title>
+    <link rel="shortcut icon" href="./assets/images/png/task.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h1>Student Search</h1>
+        <div id="subjectCategories">
+            <h3>Available Subjects:</h3>
+            <ul id="subjectList">
+                <li data-subject="math">Math</li>
+                <li data-subject="accounts">Accounts</li>
+                <li data-subject="business">Business</li>
+                <li data-subject="eco">Eco</li>
+                <li data-subject="all">All</li>
+            </ul>
+        </div>
+        <input type="text" id="searchInputStudents" placeholder="Type a subject to find students..." />
+        <ul id="studentList">
+            <li style="display: none;" data-subject="math">Student 1 - Math</li>
+            <li style="display: none;" data-subject="math">Student 2 - Math</li>
+            <li style="display: none;" data-subject="accounts">Student 3 - Accounts</li>
+            <li style="display: none;" data-subject="business">Student 4 - Business</li>
+            <li style="display: none;" data-subject="eco">Student 5 - Eco</li>
+            <li style="display: none;" data-subject="eco">Student 6 - Eco</li>
+            <li style="display: none;" data-subject="math">Student 7 - Math</li>
+            <li style="display: none;" data-subject="accounts">Student 8 - Accounts</li>
+            <li style="display: none;" data-subject="math">Student 9 - Math</li>
+            <li style="display: none;" data-subject="eco">Student 10 - Eco</li>
+        </ul>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInputStudents');
+        const students = document.querySelectorAll('#studentList li');
+        const subjects = document.querySelectorAll('#subjectList li');
+
+        function filterStudents(filter) {
+            students.forEach(student => {
+                const subject = student.dataset.subject.toLowerCase();
+                student.style.display = (filter === "all" || subject === filter || student.textContent.toLowerCase().includes(filter)) ? '' : 'none';
+            });
+        }
+
+        searchInput.addEventListener('input', () => filterStudents(searchInput.value.toLowerCase().trim()));
+
+        subjects.forEach(item => item.addEventListener('click', () => filterStudents(item.dataset.subject.toLowerCase())));
+
+        students.forEach(student => student.style.display = 'none');
+
+    </script>
+
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html> -->
