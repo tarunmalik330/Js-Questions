@@ -29,52 +29,52 @@
         </div>
         <input type="text" id="searchInputStudents" placeholder="Type a subject to find students..." />
         <ul id="studentList">
-            <li data-subject="math">Student 1 <br><span
+            <li data-subject="math, accounts">Student 1 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Muskan <br>
-                    Subject = Math <br>
+                    Subject = Math, Accounts <br>
                     Teacher = Mrs. Punita <br>
                     Class = 12th
                 </span></li>
-            <li data-subject="math">Student 2 <br><span
+            <li data-subject="math, accounts">Student 2 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Ram <br>
-                    Subject = Math <br>
+                    Subject = Math, Accounts <br>
                     Teacher = Mrs. Punita <br>
                     Class = 12th
                 </span></li>
-            <li data-subject="accounts">Student 3 <br><span
+            <li data-subject="accounts,bussiness,eco">Student 3 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Shalu <br>
-                    Subject = Accounts <br>
+                    Subject = Accounts, Bussiness, Economics <br>
                     Teacher = Dr. Monika <br>
                     Class = 12th
                 </span></li>
-            <li data-subject="business">Student 4 <br><span
+            <li data-subject="business, accounts, math">Student 4 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Vivek <br>
-                    Subject = Business <br>
+                    Subject = Business, Accounts, Math <br>
                     Teacher = Dr. Monika <br>
                     Class = 12th
                 </span></li>
-            <li data-subject="eco">Student 5 <br><span
+            <li data-subject="eco, bussiness, accounts">Student 5 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Sumit <br>
-                    Subject = Economics <br>
+                    Subject = Economics, Accounts, Bussiness <br>
                     Teacher = Deepak Mital <br>
                     Class = 12th
                 </span></li>
-            <li data-subject="eco">Student 6 <br><span
+            <li data-subject="eco, accounts, bussiness">Student 6 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Anshu <br>
-                    Subject = Economics <br>
+                    Subject = Economics, Accounts, Bussiness <br>
                     Teacher = Deepak Mital <br>
                     Class = 12th
                 </span></li>
-            <li data-subject="math">Student 7 <br><span
+            <li data-subject="math, accounts">Student 7 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Smile <br>
-                    Subject = Math <br>
+                    Subject = Math, Accounts <br>
                     Teacher = Mrs. Punita <br>
                     Class = 12th
                 </span></li>
@@ -84,18 +84,18 @@
                     Subject = Accounts <br>
                     Teacher = Dr. Monika
                 </span></li>
-            <li data-subject="math">Student 9 <br><span
+            <li data-subject="math, eco">Student 9 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
                     Shyam <br>
-                    Subject = Math <br>
+                    Subject = Math, Economics <br>
                     Teacher = Mrs. Punita <br>
                     Class = 12th
 
                 </span></li>
-            <li data-subject="eco">Student 10 <br><span
+            <li data-subject="eco, math, business">Student 10 <br><span
                     style="padding-top: 12px; display: inline-block; font-weight: 600;">Name =
-                    Ravina <br>
-                    Subject = Economics <br>
+                    Rita <br>
+                    Subject = Economics, Maths, Bussiness <br>
                     Teacher = Deepak Mital <br>
                     Class = 12th
                 </span></li>
@@ -106,14 +106,18 @@
         const searchInput = document.getElementById('searchInputStudents');
         const students = document.querySelectorAll('#studentList li');
         const subjects = document.querySelectorAll('#subjectList li');
+
         function filterStudents(filter) {
             students.forEach(student => {
-                const subject = student.dataset.subject.toLowerCase();
-                student.style.display = (filter === "all" || subject === filter || student.textContent.toLowerCase().includes(filter)) ? '' : 'none';
+                const subjects = student.dataset.subject.toLowerCase().split(',').map(subject => subject.trim());
+                const studentText = student.textContent.toLowerCase();
+                student.style.display = (filter === "all" || subjects.includes(filter) || studentText.includes(filter)) ? '' : 'none';
             });
         }
         filterStudents('all');
-        searchInput.addEventListener('input', () => filterStudents(searchInput.value.toLowerCase().trim()));
+        searchInput.addEventListener('input', () => {
+            filterStudents(searchInput.value.toLowerCase().trim());
+        });
         subjects.forEach(item => item.addEventListener('click', () => {
             const selectedSubject = item.dataset.subject.toLowerCase();
             filterStudents(selectedSubject);
